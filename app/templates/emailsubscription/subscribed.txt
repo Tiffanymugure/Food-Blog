@@ -1,0 +1,7 @@
+{{ _('Dear') }} {{ subscriber.username }},
+
+{{ _('You have successfully subscribed to notifications.') }}
+{{ _('To confirm your new email please click on the following link:') }}
+
+
+{{ _('foodies') }}
