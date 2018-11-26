@@ -4,7 +4,7 @@ from flask_login import current_user, login_required
 
 from . import main
 from .. import db, photos
-from ..email import mail_message
+from ..emails import mail_message
 from ..models import Comments, Post, Subscriber, User
 from .forms import BlogForm, CommentForm, SubscriptionForm, UpdateProfile
 from app.main.forms import UpdateProfile
