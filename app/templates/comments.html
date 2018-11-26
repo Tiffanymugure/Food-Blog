@@ -1,0 +1,40 @@
+{% extends 'base.html'%}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content%}
+<body>
+<div class="container">
+    {% for post in all %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="card-header">
+                    <h2>Pitch: {{post.title}}</h2><br>
+                    <h5 class="card subtitle">Created at:{{post.time}}</h5>
+                </div>
+                <div class="card-text">
+                    <h5>Pitch: {{post.post}}</h5>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="container-fluid">
+    <div>
+        {% for comm in comment_is %}
+        <div class="container-fluid card mb-2">
+            <div class="card-body">
+                <h5 class="card-header mb-1">By: {{comm.name}}</h5>
+                <h6 class="card-header">Comment: {{comm.comment}}</h6>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="container-fluid">
+            {{ wtf.quick_form(comment) }}
+            {{simplemde.load}}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+</body>
