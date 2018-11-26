@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<body>
+<div class="container">
+    <h1>FOODLAB</h1>
+    {% for post in post %}
+    <div>
+        <div class="card mb-3">
+            <div class="card-header">
+                <span>{{post.header}}</span></br><br>
+                 <h6 class="card-subtitle">Category: {{post.category}}</h6>
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                    <h5>{{post.post|truncate(150)}}</h5>
+                </div>
+                <div class="card-text">
+                    <span><em>Posted on:{{post.time}}</em></span>
+                </div>
+                <p><a href="/posts/{{post.id}}"><button class="btn btn-primary">Read More</button></a></p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+</body>
