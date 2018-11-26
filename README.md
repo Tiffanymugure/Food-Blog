@@ -10,7 +10,7 @@ This project was created on a debian linux platform but should work on other uni
 
 ## Cloning of the respository
 In terminal:
-* $ git clone https://github.com/EugeneZnm/BLOG-IT.git
+* $ git clone https://github.com/tiffanymugure/foodblog.git
 * Creating the Virtual Environment
 * sudo apt-get install python3.6-venv
 * python3.6 -m venv virtual
