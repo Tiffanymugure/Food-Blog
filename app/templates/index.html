@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+    {% block content %}
+<body>
+    <div class="card">
+        <h2 style="text-align: center; font-weight: bold; text">WELCOME TO CODEX</h2>
+    </div>
+       {% for post in all %}
+        <div>
+            <div class="card mb-2" style="width: 300px;">
+                <div class="card-header">
+                        <span>{{post.header}}</span></br><br>
+                        <h6 class="card-subtitle">Category: {{post.category}}</h6>
+                    </div>
+                    <div>
+                        <div class="card-text">
+                            <h5>{{post.post|truncate(150)}}</h5>
+                        </div>
+                        <div class="card-text">
+                            <span><em>Posted on:{{post.time}}</em></span>
+                        </div>
+                    </div> 
+                    <div class="card-footer row">
+                        <div class="col-md-6">
+                            <p><a href="/posts/{{post.id}}"><button class="btn btn-success">Read More</button></a></p>
+                        </div>
+                        {% if current_user.is_authenticated %}
+                        <div class="col-md-6">
+                            <p><a href="/delete/{{post.id}}"><button class="btn btn-danger">Delete Post</button></a></p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>              
+            </div>
+        </div>
+        {% endfor %}
+        <div>
+            <div class="jumbotron">
+                <div class="card">
+                    <h4><em>SUBSCRIBE TO FOODIES</em></h4>
+                </div>
+                <div>
+                    {{ wtf.quick_form(subscribed) }}
+                    {{simplemde.load}}
+                </div>
+            </div>
+        </div>
+</body>
+{% endblock %}
