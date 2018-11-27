@@ -11,6 +11,11 @@ from datetime import datetime
 # import class UserMixin
 from flask_login import UserMixin
 
+# call  back function retrieving writer id
+@login_manager.user_loader
+def load_writer(user_id):
+    return User.query.get(int(user_id))
+
 
 class User(UserMixin, db.Model):
     """
@@ -26,12 +31,17 @@ class User(UserMixin, db.Model):
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
 
-    # call  back function retrieving writer id
-    @login_manager.user_loader
-    def load_writer(user_id):
-        return User.query.get(int(user_id))
+    # # call  back function retrieving writer id
+    # @login_manager.user_loader
+    # def load_writer(user_id):
+    #     return User.query.get(int(user_id))
 
-    def set_password(self, password):
+    @property
+    def password(self):
+        raise AttributeError('Cannot Read')
+
+    @password.setter
+    def password(self, password):
         """
         method to set passwords
         """

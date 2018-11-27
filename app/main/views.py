@@ -4,7 +4,7 @@ from flask_login import current_user, login_required
 
 from . import main
 from .. import db, photos
-from ..emails import mail_message
+from ..email import mail_message
 from ..models import Comments, Post, Subscriber, User
 from .forms import BlogForm, CommentForm, SubscriptionForm, UpdateProfile
 from app.main.forms import UpdateProfile
@@ -57,7 +57,6 @@ def foodlab():
     foodlab = Post.query.filter_by(category="foodlab").all()
 
     return render_template('foodlab.html', post=foodlab)
-
 
 @main.route('/techniques', methods=['GET', 'POST'])
 def techniques():
@@ -141,7 +140,7 @@ def single_pitch(id):
         comments = Comments(comment=comment.comment.data, post_id=id, name=comment.name.data)
         comments.save_comments()
    
-    return render_template('singleblog.html', comment=comment, comment_is=comment_is,view=view)
+    return render_template('single.html', comment=comment, comment_is=comment_is,view=view)
 
 
 # user profile
